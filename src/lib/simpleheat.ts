@@ -1,12 +1,8 @@
 
 export class SimpleHeat {
-  //private _canvas: HTMLCanvasElement;
   private _circleCanvas: HTMLCanvasElement;
   private _gradientCanvas: HTMLCanvasElement;
 
-  //private _ctx: CanvasRenderingContext2D;
-  //private _width: number;
-  //private _height: number;
   private _max: number = 1;
   private _data: number[][] = []; //x,y,weight coordinate
   private _defaultRadius: number = 25;
@@ -26,11 +22,6 @@ export class SimpleHeat {
 
     this.gradient(this._defaultGradientRamp);
     this.radius(this._defaultRadius);
-
-    //this._canvas = canvas;// = typeof canvas === 'string' ? document.getElementById(canvas) : canvas;
-    //this._ctx = this._canvas.getContext('2d');
-    //this._width = canvas.width;
-    //this._height = canvas.height;
 
     this._data = [];
   }
@@ -96,8 +87,6 @@ export class SimpleHeat {
     }
   }
   draw(canvas: HTMLCanvasElement, minOpacity: number) {
-    //if (!this._circle) this.radius(this.defaultRadius);
-    //if (!this._grad) this.gradient(this.defaultGradient);
     let width = canvas.width;
     let height = canvas.height;
 
