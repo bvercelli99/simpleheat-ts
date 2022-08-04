@@ -1,5 +1,3 @@
-import { HeatPoint } from "./heatpoint.model";
-
 
 export class SimpleHeat {
   //private _canvas: HTMLCanvasElement;
@@ -10,7 +8,7 @@ export class SimpleHeat {
   //private _width: number;
   //private _height: number;
   private _max: number = 1;
-  private _data: HeatPoint[] = [];
+  private _data: number[][] = []; //x,y,weight coordinate
   private _defaultRadius: number = 25;
   private _radius: number = 0;
   private _gradient: Uint8ClampedArray = new Uint8ClampedArray();
@@ -37,7 +35,7 @@ export class SimpleHeat {
     this._data = [];
   }
 
-  data(data: HeatPoint[]): void {
+  data(data: number[][]): void {
     this._data = data;
   }
 
@@ -45,7 +43,7 @@ export class SimpleHeat {
     this._max = m;
   }
 
-  add(point: HeatPoint): void {
+  add(point: number[]): void {
     this._data.push(point);
   }
 
@@ -111,8 +109,8 @@ export class SimpleHeat {
       // draw a grayscale heatmap by putting a blurred circle at each data point
       for (var i = 0, len = this._data.length, p; i < len; i++) {
         p = this._data[i];
-        ctx.globalAlpha = Math.min(Math.max(p.weight / this._max, minOpacity === undefined ? 0.05 : minOpacity), 1);
-        ctx.drawImage(this._circleCanvas, p.x - this._radius, p.y - this._radius);
+        ctx.globalAlpha = Math.min(Math.max(p[2] / this._max, minOpacity === undefined ? 0.05 : minOpacity), 1);
+        ctx.drawImage(this._circleCanvas, p[0] - this._radius, p[1] - this._radius);
       }
 
       // colorize the heatmap, using opacity value of each pixel to get the right color from our gradient
