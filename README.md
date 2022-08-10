@@ -22,7 +22,7 @@ this.heat = new SimpleHeat(document.createElement('canvas'), document.createElem
 this.heat.data(data);
 this.heat.max(18);
 
-this.heat.draw(this.canvas.nativeElement, 0.05);
+this.heat.draw(this.canvas.nativeElement.getContext('2d'), 0.5);
 ```
 
 
