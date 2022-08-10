@@ -86,11 +86,9 @@ export class SimpleHeat {
       this._gradient = ctx.getImageData(0, 0, 1, 256).data;
     }
   }
-  draw(canvas: HTMLCanvasElement, minOpacity: number) {
-    let width = canvas.width;
-    let height = canvas.height;
-
-    let ctx = canvas.getContext('2d');
+  draw(ctx: CanvasRenderingContext2D, minOpacity: number) {
+    let width = ctx.canvas.width;
+    let height = ctx.canvas.height;
 
     if (null != ctx) {
       ctx.clearRect(0, 0, width, height);
